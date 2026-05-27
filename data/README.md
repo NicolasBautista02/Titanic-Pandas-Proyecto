@@ -1,0 +1,1 @@
+Los datos del Titanic deben ser descargados directamente desde Kaggle (https://www.kaggle.com/competitions/titanic) debido a restricciones del proyecto.
