@@ -1,0 +1,15 @@
+Reporte de Incidencia: Resolución de Conflicto de Fusión (Merge Conflict) en el Repositorio
+Descripción del escenario:
+Se generó un conflicto de fusión (Merge Conflict) de manera intencional durante el flujo de trabajo con ramas independientes en Git. El proceso y su respectiva solución se desarrollaron de la siguiente manera:
+
+Origen del conflicto: Se envió un primer Pull Request (PR) desde una rama secundaria para integrar cambios al main. Tras la aprobación de este PR, no se realizó el correspondiente git fetch origin (ni git pull) en la rama main local para actualizar y guardar los cambios recién integrados en la nube.
+
+Propagación del error: Estando desactualizada la rama main local, se creó una nueva rama a partir de ella. En esta nueva rama se modificó el mismo archivo Notebook (.ipynb), alterando las mismas líneas de código. Al intentar subir esta última rama y abrir un nuevo Pull Request, GitHub bloqueó la fusión automática debido a un Merge Conflict, ya que el sistema detectaba cambios contradictorios en ambos históricos y no podía determinar de forma automatizada qué versión debía prevalecer.
+
+Solución aplicada: Para corregir el bloqueo de manera limpia y segura, se ejecutaron las siguientes acciones:
+
+Se eliminó la última rama secundaria creada que contenía el código en disputa.
+
+Se regresó a la rama main local y se ejecutó un Fetch Origin (seguido de un Pull) para sincronizar el entorno local con la versión más reciente del repositorio remoto.
+
+Una vez actualizado el main con el histórico correcto, se procedió a crear una nueva rama desde cero con un nombre completamente diferente, permitiendo reescribir y subir los cambios de forma ordenada y sin conflictos de integración.
